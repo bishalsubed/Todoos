@@ -45,13 +45,13 @@ export default function Navbar() {
                                     <DropdownMenuItem asChild>
                                         <Link href="/dashboard" className="flex items-center">
                                             <LayoutDashboard className="mr-2 h-4 w-4" />
-                                            <Link href={"/dashboard"}><span>Dashboard</span></Link>
+                                            <span>Dashboard</span>
                                         </Link>
                                     </DropdownMenuItem>
                                     <DropdownMenuItem asChild>
                                         <Link href="/subscribe" className="flex items-center">
                                             <CreditCard className="mr-2 h-4 w-4" />
-                                            <Link href={"/subscribe"}><span>Subscribe</span></Link>
+                                            <span>Subscribe</span>
                                         </Link>
                                     </DropdownMenuItem>
                                     <DropdownMenuItem onClick={() => signOut()}>

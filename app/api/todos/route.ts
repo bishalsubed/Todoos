@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
     if (!userId) {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
-    const searchParams = new URLSearchParams(req.url)
+    const { searchParams } = new URL(req.url)
     const page = parseInt(searchParams.get("page") || "1");
     const search = searchParams.get("search") || "";
     try {
@@ -59,11 +59,11 @@ export async function POST(req: NextRequest) {
             return NextResponse.json({ error: "Upgrade your subscription to add more todos" }, { status: 403 });
         }
         const { title } = await req.json()
-        const createdTodo = await prisma.todo.create({data: {title, userId}})
+        const createdTodo = await prisma.todo.create({ data: { title, userId } })
         return NextResponse.json(createdTodo, { status: 201 });
     } catch (error) {
         console.error("Error creating Todo", error);
         return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
-        
+
     }
 }

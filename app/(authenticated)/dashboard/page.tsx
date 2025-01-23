@@ -236,8 +236,13 @@ const Dashboard = () => {
                 <CardHeader>
                     <CardTitle>
                         <div className='flex justify-between items-center'>
-                            Your Todos
-                            <Input className='w-[230px]' type="text" placeholder="Search..." />
+                            <span className='underline underline-offset-4'>Your Todos</span>
+                            <Input 
+                            className='w-[250px]' 
+                            type="text" 
+                            placeholder="Search..." 
+                            onChange={(e)=> {setSearchTerm(e.target.value)}}
+                            />
                         </div>
                     </CardTitle>
                 </CardHeader>
@@ -253,7 +258,7 @@ const Dashboard = () => {
                                     <div key={todo.id} className='flex justify-between mb-2'>
                                         {todo.completed && (<div className='flex text-sm font-medium'><CheckCheck size={25} color='green' /></div>)}
                                         <textarea
-                                            className="resize-none outline-none text-sm font-semibold w-[280px] focus:border-2 focus:p-1"
+                                            className={`resize-none ${todo.completed?"text-center":"text-start" } outline-none text-sm font-semibold w-[280px] focus:border-2 focus:p-1`}
                                             value={todo.title}
                                             onClick={() => setUpdatedTitle(todo.title)}
                                             onChange={(e) => handleTitleChange(e, todo.id)}

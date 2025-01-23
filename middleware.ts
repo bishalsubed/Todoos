@@ -17,10 +17,10 @@ export default clerkMiddleware(async (auth, req) => {
             const user = await client.users.getUser(userId)
             const role = user.publicMetadata.role as string | undefined
             if (role === "admin" && req.nextUrl.pathname === "/dashboard") {
-                return NextResponse.redirect(new URL("/admin/dasboard", req.url))
+                return NextResponse.redirect(new URL("/admin/dashboard", req.url))
             }
             if (role !== "admin" && req.nextUrl.pathname.startsWith("/admin")) {
-                return NextResponse.redirect(new URL("/dasboard", req.url))
+                return NextResponse.redirect(new URL("/dashboard", req.url))
             }
             if (isPublicRoute(req)) {
                 return NextResponse.redirect(new URL(role === "admin" ? "/admin/dashboard" : "/dashboard", req.url))

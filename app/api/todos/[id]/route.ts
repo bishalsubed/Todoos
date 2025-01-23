@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs/server";
 import prisma from "@/lib/prisma";
-import { preloadStyle } from "next/dist/server/app-render/entry-base";
 
 export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
     const { userId } = await auth();
